@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      list : ["Spagetti","Mushrooms", "Mariokart", "Dark Sun"]
+    }
+  }
+ 
+  render(){
+    //Note this use of map
+    let items = this.state.list.map((e,index)=>{
+      return <h2 key={index}>{e}</h2> //That's not how return normally works but ok...
+    })
+    return (
+      <div className="App">
+          {items}
+      </div>
+    );
+  }
+ 
 }
 
 export default App;
